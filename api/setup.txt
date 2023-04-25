@@ -1,0 +1,24 @@
+Installation of backend
+create a folder named api
+
+- npm init -y
+
+create a index.html and express connection
+
+add "type": "module", and "start": "node index.js" in package.json
+
+Install nodemon and add it to package.json
+
+- npm i nodemon
+- "start": "nodemon index.js"
+
+Create a mongodb database and install mongodb
+- npm install mongodb
+- https://cloud.mongodb.com/
+- copy the connection string
+
+Install dotenv
+- npm i dotenv
+
+Install mongoose to create a schema for mongodb
+- npm i mongoose
