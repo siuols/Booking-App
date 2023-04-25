@@ -1,2 +1,2 @@
-# Booking-App
-React Booking / Reservation System
+# React Booking / Reservation System
+MERN stack hotel reservation app
