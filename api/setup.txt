@@ -26,3 +26,6 @@ Install mongoose to create a schema for mongodb
 Create routes
 
 Create controllers
+
+Install bcryptjs for encrption of password
+- npm i bcryptjs
