@@ -29,3 +29,12 @@ Create controllers
 
 Install bcryptjs for encrption of password
 - npm i bcryptjs
+
+Install jsonwebtoken for web token authentication
+- npm i jsonwebtoken
+
+Generate secret key
+- openssl rand -base64 32
+
+Install cookie parser to parse token 
+- npm i cookie-parser

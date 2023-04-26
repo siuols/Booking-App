@@ -1,6 +1,7 @@
 import User from '../models/User.js'
 import bcrypt from 'bcryptjs'
 import { createError } from '../utils/error.js'
+import jwt from 'jsonwebtoken'
 
 export const createUser = async (req, res, next) => {
   try {
@@ -30,23 +31,17 @@ export const loginUser = async (req, res, next) => {
     )
     if (!isPasswordCorrect)
       return next(createError(400, 'Wrong password or username'))
-    const { isAdmin, password, ...rest } = user._doc
-    res.status(200).json({ ...rest })
-  } catch (err) {
-    next(err)
-  }
-}
 
-export const updateUser = async (req, res, next) => {
-  try {
-    const updateUser = await User.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: req.body,
-      },
-      { new: true }
+    const token = jwt.sign(
+      { id: user._id, username: user.username, isAdmin: user.isAdmin },
+      process.env.JWT
     )
-    res.status(200).json(updateUser)
+
+    const { password, isAdmin, ...rest } = user._doc
+    res
+      .cookie('access_token', token, { httpOnly: true })
+      .status(200)
+      .json({ ...rest })
   } catch (err) {
     next(err)
   }
