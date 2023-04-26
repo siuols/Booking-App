@@ -24,3 +24,5 @@ Install mongoose to create a schema for mongodb
 - npm i mongoose
 
 Create routes
+
+Create controllers
